@@ -288,7 +288,7 @@ public class EchoRpcIT {
         } catch (ExecutionException e) {
             assertTrue("Cause is not of type RequestTimedOutException: " + ExceptionUtils.getStackTrace(e), e.getCause() instanceof RequestTimedOutException);
             // Verify that the message body was suppressed
-            MockLogAppender.assertLogMatched(Level.DEBUG, "[Body is not logged]");
+            MockLogAppender.assertNoLogMatched(Level.ERROR, "HELLO!!!");
         }
 
         routeManager.unbind(echoRpcModule);
